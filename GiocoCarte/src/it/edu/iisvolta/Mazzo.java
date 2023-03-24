@@ -43,5 +43,10 @@ public class Mazzo {
 		elencoCarte.get(pos).setEstratta(true);	
 		return elencoCarte.get(pos);
 	}
+
+	public String getTipologia() {
+		return tipologia;
+	}
+
 	
 }
