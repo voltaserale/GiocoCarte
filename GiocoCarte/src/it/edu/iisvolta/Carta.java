@@ -29,10 +29,13 @@ public class Carta {
 		this.seme = seme;
 	}
 
+	
+	//getter
 	public boolean isEstratta() {
 		return estratta;
 	}
 
+	//setter
 	public void setEstratta(boolean estratta) {
 		this.estratta = estratta;
 	}
