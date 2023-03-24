@@ -36,12 +36,14 @@ public class Mazzo {
 	public Carta estraiCarta() {
 		Random r=new Random();
 		int pos;
+		Carta c;
 		do {
-			pos=r.nextInt(elencoCarte.size());	//posizione casuale tra 0 e posizione massima		
-		} while (elencoCarte.get(pos).isEstratta());  //se è già estratta torno indietro
+			pos=r.nextInt(elencoCarte.size());	//posizione casuale tra 0 e posizione massima	
+			c=elencoCarte.get(pos);
+		} while (c.isEstratta());  //se è già estratta torno indietro
 		
-		elencoCarte.get(pos).setEstratta(true);	
-		return elencoCarte.get(pos);
+		c.setEstratta(true);	
+		return c;
 	}
 
 	public String getTipologia() {
