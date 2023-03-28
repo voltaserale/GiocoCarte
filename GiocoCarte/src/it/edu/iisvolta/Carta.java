@@ -41,5 +41,49 @@ public class Carta {
 	}
 	
 	
+	public String getSimbolo() {
+		String simbolo;
+		if (seme.equals("Bastoni") || seme.equals("Coppe") || 
+			seme.equals("Denari") || seme.equals("Spade")) {
+			//carta napoletana
+			switch(valore) {
+			case 8:
+				simbolo="fante";
+				break;
+			case 9:
+				simbolo="cavallo";
+				break;
+			case 10:
+				simbolo="re";
+				break;
+			default:
+				simbolo=Integer.toString(valore);	
+				break;
+			}
+		}
+		else {
+			//carta francese
+			switch(valore) {
+			case 11:
+				simbolo="J";
+				break;
+			case 12:
+				simbolo="Q";
+				break;
+			case 13:
+				simbolo="K";
+				break;
+			default:
+				simbolo=Integer.toString(valore);	
+				break;
+			}
+		}	
+		return simbolo;
+	}
+				
+		
+			
+	
+	
 
 }

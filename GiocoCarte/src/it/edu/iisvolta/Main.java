@@ -14,7 +14,7 @@ public class Main {
 		Carta c;
 		do {
 			c=m.estraiCarta();
-			System.out.println("Carta estratta: "+c.getValore()+
+			System.out.println("Carta estratta: "+c.getSimbolo()+
 					" di "+c.getSeme());
 		} while(c!=null);
 		
