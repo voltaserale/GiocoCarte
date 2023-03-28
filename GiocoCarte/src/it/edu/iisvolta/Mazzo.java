@@ -8,10 +8,12 @@ public class Mazzo {
 	private ArrayList<Carta> elencoCarte=new ArrayList<>();
 	private String[] semiNapoletani= {"Bastoni","Coppe","Denari","Spade"};
 	private String[] semiFrancesi= {"Quadri","Fiori","Picche","Cuori"};
+	private int numeroEstratte;
 	
 	public Mazzo(String tipologia) throws Exception {
 		super();
 		this.tipologia = tipologia;
+		numeroEstratte=0;
 		switch(tipologia) {
 			case "napoletane":
 				for (int seme=0;seme<4;seme++)
@@ -37,12 +39,20 @@ public class Mazzo {
 		Random r=new Random();
 		int pos;
 		Carta c;
-		do {
-			pos=r.nextInt(elencoCarte.size());	//posizione casuale tra 0 e posizione massima	
-			c=elencoCarte.get(pos);
-		} while (c.isEstratta());  //se è già estratta torno indietro
+		if (numeroEstratte<elencoCarte.size())
+		{
+			//c'è ancora qualcosa da estrarre
+			do {
+				pos=r.nextInt(elencoCarte.size());	//posizione casuale tra 0 e posizione massima	
+				c=elencoCarte.get(pos);
+			} while (c.isEstratta());  //se è già estratta torno indietro
+			
+			c.setEstratta(true);
+			numeroEstratte++;
+		} else
+			//tutte le carte sono state estratte => ritorno una carta nulla
+			c=null;
 		
-		c.setEstratta(true);	
 		return c;
 	}
 

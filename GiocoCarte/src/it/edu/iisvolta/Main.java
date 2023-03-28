@@ -14,11 +14,12 @@ public class Main {
 		Carta c;
 		do {
 			c=m.estraiCarta();
-			System.out.println("Carta estratta: "+c.getSimbolo()+
-					" di "+c.getSeme());
+			if (c!=null)
+				System.out.println("Carta estratta: "+c.getSimbolo()+
+						" di "+c.getSeme());
 		} while(c!=null);
 		
-		
+		System.out.println("Tutte le carte sono state estratte!");
 		s.close();
 
 	}
