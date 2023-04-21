@@ -80,10 +80,13 @@ public class Carta {
 		}	
 		return simbolo;
 	}
-				
-		
 			
-	
+	public float getPunteggio() {
+		if (valore<=7)
+			return valore;
+		else
+			return 0.5f;
+	}
 	
 
 }
