@@ -11,8 +11,8 @@ public class Main {
 		Mazzo m=new Mazzo("napoletane");
 		int sommaUtente=500;	//soldi dell'utente
 		float punteggioUtente=0, punteggioBanco=0;
-		boolean turnoUtente=true;
-		String risposta="";
+		boolean turnoUtente=true, primaVoltaBanco=true;
+		String risposta="s";
 		
 		Carta c;
 		do {
@@ -32,7 +32,11 @@ public class Main {
 			else {
 				System.out.println("banco");
 				if (punteggioBanco==0)		//se è la prima carta del banco torno sull'utente
-					turnoUtente=true;	
+				{
+					turnoUtente=true;
+								
+				}
+					
 				punteggioBanco+=c.getPunteggio();
 				
 			}
@@ -42,13 +46,18 @@ public class Main {
 			System.out.println("Punteggio utente: "+punteggioUtente);	
 			System.out.println("Punteggio banco: "+punteggioBanco);	
 			
-			if (turnoUtente && punteggioUtente<=7.5) {
+			if (turnoUtente && punteggioUtente<=7.5 && !primaVoltaBanco) {
 				System.out.println("Vuoi un'altra carta(s/n) ?");
 				risposta=s.nextLine();
+				if (!risposta.equals("s"))
+					turnoUtente=false;	//tocca al banco
+				
 			} else
-			{
+			{			
+				//if (turnoUtente)
+					primaVoltaBanco=false;		
 				System.out.println("Premi Enter per continuare");
-				s.nextLine();
+				s.nextLine();				
 			}
 			
 		} while(
@@ -56,6 +65,12 @@ public class Main {
 			(!turnoUtente && punteggioBanco<5));	  //tocca al banco e il punteggio del banco è <5	
 		if (punteggioUtente>7.5)
 			System.out.println("Vince il banco!");
+		else 
+			if (punteggioBanco>7.5 || punteggioUtente>punteggioBanco)
+				System.out.println("Vince l'utente!");
+			else 
+				System.out.println("Vince il banco!");
+			
 		System.out.println("Partita finita!");
 		s.nextLine();
 		s.close();
